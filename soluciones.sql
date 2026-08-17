@@ -47,13 +47,14 @@ group by  v.venta_id, p.nombre, p.categoria, v.cantidad;
 -- identificando tanto productos sin ventas como ventas sin producto.
 -- [Tu consulta aquí]
 
+
 select
-v.venta_id,
-p.nombre,
-p.categoria,
-v.cantidad,
-sum(v.cantidad*p.precio) as Total
+    v.venta_id,
+    p.nombre,
+    p.categoria,
+    v.cantidad,
+    sum(v.cantidad*p.precio) as Total
 from productos p
 full outer join ventas v
-on v.producto_id = p.producto_id
+    on v.producto_id = p.producto_id
 group by  v.venta_id, p.nombre, p.categoria, v.cantidad;
