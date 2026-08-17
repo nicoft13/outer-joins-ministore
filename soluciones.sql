@@ -10,14 +10,15 @@
 -- [Tu consulta aquí]
 
 select
-v.venta_id,
-p.nombre,
-p.categoria,
-v.cantidad,
-sum(v.cantidad*p.precio) as Total
+    v.venta_id,
+    p.nombre,
+    p.categoria,
+    v.cantidad,
+    sum(v.cantidad*p.precio) as Total
 from productos p
 left join ventas v
-on v.producto_id = p.producto_id
+    on v.producto_id = p.producto_id
+where v.venta_id is null
 group by p.producto_id, v.venta_id, p.nombre, p.categoria, v.cantidad;
 
 
@@ -28,15 +29,17 @@ group by p.producto_id, v.venta_id, p.nombre, p.categoria, v.cantidad;
 -- [Tu consulta aquí]
 
 select
-v.venta_id,
-p.nombre,
-p.categoria,
-v.cantidad,
-sum(v.cantidad*p.precio) as Total
+    v.venta_id,
+    p.nombre,
+    p.categoria,
+    v.cantidad,
+    sum(v.cantidad*p.precio) as Total
 from productos p
 right join ventas v
-on v.producto_id = p.producto_id
+    on v.producto_id = p.producto_id
+where p.producto_id is null
 group by  v.venta_id, p.nombre, p.categoria, v.cantidad;
+
 
 -- ── CONSULTA 3: FULL OUTER JOIN ───────────
 -- Pregunta de negocio: Vista completa de auditoría que muestre
@@ -51,6 +54,6 @@ p.categoria,
 v.cantidad,
 sum(v.cantidad*p.precio) as Total
 from productos p
-inner join ventas v
+full outer join ventas v
 on v.producto_id = p.producto_id
 group by  v.venta_id, p.nombre, p.categoria, v.cantidad;
