@@ -1,10 +1,11 @@
 1- ¿Por qué usé LEFT JOIN en la Consulta 1 y no INNER JOIN?
-Utilice el LEFT JOIN porque necesitaba que aparezcan todas las ventas, incluyendo aquellas a las que no tienen coincidencia en la tabla productos. 
+Usé LEFT JOIN porque este tipo de JOIN preserva siempre la tabla que está a la izquierda.
 Si usaba INNER JOIN, solo se muestran las ventas que tienen un producto válido.
-
+Eso hace que ventas con productos mal cargados desaparezcan del resultado.
 
 2- ¿Por qué usé RIGHT JOIN en la Consulta 2?
-Aca usé RIGHT JOIN porque quería que productos aparecian, incluso los que nunca se vendieron.
+AUsé RIGHT JOIN porque este JOIN preserva siempre la tabla que está a la derecha.
+Si un producto no aparece en ventas, igual queda en el resultado, pero con los campos de ventas en NULL.
 
 3- ¿Qué representan los valores NULL en cada resultado?
 Los NULL significan los datos que no coinciden en ambas tablas.
